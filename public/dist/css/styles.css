@@ -1,0 +1,38 @@
+body {
+    margin: 10px;
+}
+
+li{
+    text-align: center;
+}
+
+a:hover{
+    cursor:pointer;
+}
+
+img{
+    display: block;
+    margin: auto;
+    max-height: 500px;
+}
+
+.glyphicon.glyphicon-picture {
+    font-size: 20vw;
+    color:black;
+}
+
+.glyphicon.glyphicon-picture:hover {
+    color:#BDBDBD;
+}
+
+.glyphicon.glyphicon-trash {
+    font-size: 20vw;
+    top:25%;
+    left: 39%;
+    position: absolute;
+    z-index:100;
+    color:#FF0000;
+}
+.glyphicon.glyphicon-trash:hover {
+    color:#BDBDBD;
+}

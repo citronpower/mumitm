@@ -1,0 +1,31 @@
+<div data-ng-if="!user">
+    <div class="page-header">
+        <h1>Connexion</h1>
+    </div>
+    <form name="form_login" ng-model="form_login" >
+        <div class="form-group">
+            <label class="control-label">Nom d'utilisateur</label>
+            <div >
+                <input type="text" class="form-control" ng-model="username" ng-required="true" placeholder="Nom d'utilisateur">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class=" control-label">Mot de passe</label>
+            <div >
+                <input type="password" class="form-control" ng-model="password" ng-required="true" placeholder="Mot de passe">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="">
+                <button type="submit" class="btn btn-success btn-lg btn-block" ng-click="login(username, password)">Se connecter</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div data-ng-if="user">
+    <div class="page-header">
+        <h1>Déconnexion</h1>
+    </div>
+    <button type="button" class="btn btn-danger btn-lg btn-block" data-ng-click="logout()">Se déconnecter</button>
+</div>

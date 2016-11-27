@@ -1,0 +1,15 @@
+<div class="page-header">
+    <h1>Merci de ranger ton <b>bordel</b></h1>
+</div>
+<ul class="list-group">
+    <li class="list-group-item" data-ng-if="user">
+        <label for="upload">
+            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+            <input type="file" ngf-select="add_image($file)" id="upload" style="display:none">
+        </label>
+    </li>
+    <li class="list-group-item" data-ng-repeat="image in dirty_images">
+        <img class="img-responsive img-rounded" data-ng-src="/dist/img/{{image}}" alt="{{image}}" />
+        <a href="" data-ng-click="del_image(image)"><span class="glyphicon glyphicon-trash" data-ng-if="user"></span></a>
+    </li>
+</ul>

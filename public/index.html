@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html data-ng-app="app" data-ng-init="init()" data-ng-controller="mainController">
+    <head>
+		<meta charset="UTF-8">
+
+		<link href="dist/css/bootstrap.css" rel="stylesheet">
+		<link href="dist/css/styles.css" rel="stylesheet">
+
+        <title>eChaubi</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular-sanitize.js"></script>
+        <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+
+        <script src="dist/js/bootstrap.min.js"></script>
+        <script src="dist/js/ng-file-upload.min.js"></script>
+        <script src="dist/js/ng-file-upload-shim.min.js"></script>
+
+		<script src="app.js"></script>
+
+        <script src="services/mainFactory.js"></script>
+
+        <script src="controllers/mainController.js"></script>
+
+    </head>
+    <body>
+        <div class="ng-view"></div>
+    </body>
+</html>
