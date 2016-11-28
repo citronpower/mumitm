@@ -38,11 +38,31 @@ angular.module("app").factory("mainFactory", ['$http', 'Upload', function ($http
             });
     };
 
+    var start_mitm = function(){
+        return $http.get("/start_mitm")
+            .then(function(response) {
+                return response.data;
+            }, function(response) {
+                return false;
+            });
+    };
+
+    var stop_mitm = function(){
+        return $http.get("/stop_mitm")
+            .then(function(response) {
+                return response.data;
+            }, function(response) {
+                return false;
+            });
+    }
+
     return {
         get_dirty_images: get_dirty_images,
         add_dirty_image: add_dirty_image,
         del_dirty_image: del_dirty_image,
-        login: login
+        login: login,
+        start_mitm: start_mitm,
+        stop_mitm: stop_mitm
     };
 }
 ]);
