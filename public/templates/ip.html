@@ -1,0 +1,24 @@
+<div data-ng-if="user">
+    <table>
+        <tbody>
+            <tr data-ng-repeat="ip in ips">
+                <td>{{ip.ip}}</td>
+                <td>
+                    <button type="submit" class="btn btn-default" data-ng-click="del_ip(ip)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <div class="input-group">
+                        <input type="text" data-ng-model="new_ip" class="form-control" placeholder="IP">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" data-ng-click="add_ip(new_ip)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                          </span>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

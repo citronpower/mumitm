@@ -5,8 +5,10 @@
     <li class="list-group-item" data-ng-if="user">
         <label for="upload">
             <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-            <input type="file" ngf-select="add_image($file)" id="upload" style="display:none">
+            <input type="file" ngf-select="add_image($file, text)" id="upload" style="display:none">
         </label>
+        <br />
+        <input type="text" class="form-control" ng-model="text" placeholder="Ajouter du text">
     </li>
     <li class="list-group-item" data-ng-repeat="image in dirty_images">
         <img class="img-responsive img-rounded" data-ng-src="/dist/img/{{image}}" alt="{{image}}" />

@@ -13,5 +13,8 @@ app.config(['$routeProvider',
 		.when("/logout", {
 			templateUrl : "templates/login.html"
 		})
+		.when("/ips", {
+			templateUrl : "templates/ip.html"
+		})
 		.otherwise({redirectTo:'/home'});
 }]);
