@@ -27,17 +27,18 @@ router.post("/add/dirty_image", urlencodedParser, function(req, res, next){
     if (req.files) {
         var image = req.files.image;
         var text = req.body.text;
-        
+
         image.mv(__dirname + '/../public/dist/img/' + image.name, function (err) {
             if (err) {
                 res.send(false);
             }
             else {
                 if(text){
+                  console.log(text);
                   Jimp.read(__dirname + '/../public/dist/img/' + image.name, function (err, jimage) {
                     Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
 
-                      jimage.fade(0.7).print(font, 10, 10, text).write(__dirname + '/../public/dist/img/' + image.name, function(){
+                      jimage.fade(0.7).scaleToFit(500, 500).print(font, 10, 10, text).write(__dirname + '/../public/dist/img/' + image.name, function(){
                         res.send(true);
                       });
                     });
