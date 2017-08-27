@@ -15,7 +15,6 @@ angular.module("app").controller("mainController", function ($scope, $location, 
 
         $scope.get_ips = function(){
             mainFactory.get_ips().then(function(result){
-                console.log(result);
                 $scope.ips = result;
             });
         };
@@ -45,6 +44,15 @@ angular.module("app").controller("mainController", function ($scope, $location, 
                 mainFactory.add_dirty_image(image, text).then(function(result){
                     if(result){
                         $scope.dirty_images.push(image.name);
+                        if($scope.dirty_images.length==1){
+                          mainFactory.start_mitm().then(function(result){
+                            if(true){
+                              console.log("MITM IS RUNNING");
+                            }else{
+                                console.log("MITM ERROR WHILE STARTING");
+                            }
+                          });
+                        }
                     }
                 });
             }
@@ -55,6 +63,15 @@ angular.module("app").controller("mainController", function ($scope, $location, 
                 mainFactory.del_dirty_image(image).then(function (result) {
                     if (result) {
                         $scope.dirty_images.splice($scope.dirty_images.indexOf(image), 1);
+                        if($scope.dirty_images.length==0){
+                          mainFactory.stop_mitm().then(function(result){
+                             if(true){
+                               console.log("MITM HAS STOPPED");
+                             }else{
+                                 console.log("MITM ERROR WHILE STOPPING");
+                             }
+                          });
+                        }
                     }
                 });
             }

